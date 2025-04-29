@@ -19,6 +19,9 @@ This paper will be utilizing the mariokart data set from openintro.\
 This data set was collected by recording the auction data from 143 listings for Mario Kart for the Nintendo Wii.\
 This data was collected in October 2009.\
 This data set has 12 variables, however we will be focusing on three, the final sale price, the shipping price, and the number of wheels included.\
+```{r}
+mariokart
+```
 
 ### Variables
 
