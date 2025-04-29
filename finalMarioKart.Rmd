@@ -59,6 +59,7 @@ The primary purpose of this assessment is to find what effect the quantity of st
 As the data set does not provide ending auction price as its own variable, we must subtract shipping price from the total price
 
 ```{r}
-auction_pr <- mariokart$total_pr - mariokart$ship_pr
-cbind(auction_pr, mariokart)
+mariokart <- as_tibble(mariokart)
+mariokart %>%
+  mutate (auction_pr = total_pr - ship_pr)
 ```
