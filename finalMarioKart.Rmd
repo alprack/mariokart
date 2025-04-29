@@ -37,3 +37,17 @@ Alternative: The quantity of wheels affects the auction price.\
 Type 1: We conclude that the price changes based on the wheels, even though it does not.\
 Type 2: We conclude that the price does not change based on the wheels, even though it did.\
 Type 1 would be worse, because the conclusion it draws could be construed as actionable information, leading to a greater consequence.\
+
+### Supporting Questions
+How independent is the number of wheels as a variable? How to other variables effect the auction price? How does the number of wheel effect the shipping price?
+
+### Expectations
+We expect that increasing the number of wheels will increase the auction price
+
+## Main Analyses:
+
+As the data set does not provide ending auction price as its own variable, we must subtract shipping price from the total price
+
+```{r}
+auction_pr <- mariokart$total_pr - mariokart$ship_pr
+```
