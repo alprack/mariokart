@@ -3,27 +3,37 @@ title: "finalProjAboutMarioKart"
 author: "Rowan Ess, Anna Prack"
 date: "2025-04-22"
 output: html_document
+editor_options: 
+  markdown: 
+    wrap: sentence
 ---
 
 ```{r, warning=FALSE,message=FALSE}
 library(tidyverse)
 library(openintro)
 ```
+
 ## Data Introduction
-This paper will be utilizing the mariokart data set from openintro. This data set was collected by recording the auction data from 143 listings for Mario Kart for the Nintendo Wii. This data was collected in October 2009. This data set has 12 variables, however we will be focusing on three, the final sale price, the shipping price, and the number of wheels included.
+
+This paper will be utilizing the mariokart data set from openintro.\
+This data set was collected by recording the auction data from 143 listings for Mario Kart for the Nintendo Wii.\
+This data was collected in October 2009.\
+This data set has 12 variables, however we will be focusing on three, the final sale price, the shipping price, and the number of wheels included.\
 
 ### Variables
-total_pr: total price (numerical)
-ship_pr: shipping price (numerical)
-wheels: numbers of wheels included (numerical)
+
+total_pr: total price (numerical)\
+ship_pr: shipping price (numerical)\
+wheels: numbers of wheels included (numerical)\
 
 ## Research Questions:
-Question: How does the quantity of wheels affect the auction price for a Mario Kart Wii game?
-Null: The quantity of wheels does not affect the auction price.
-Alternative: The quantity of wheels affects the auction price.
+
+Question: How does the quantity of wheels affect the auction price for a Mario Kart Wii game?\
+Null: The quantity of wheels does not affect the auction price.\
+Alternative: The quantity of wheels affects the auction price.\
 
 ### Errors
-Type 1: We conclude that the price changes based on the wheels, even though it does not.
-Type 2: We conclude that the price does not change based on the wheels, even though it did.
-Type 1 would be worse, because the conclusion it draws could be construed as actionable information, leading to a greater consequence.
 
+Type 1: We conclude that the price changes based on the wheels, even though it does not.\
+Type 2: We conclude that the price does not change based on the wheels, even though it did.\
+Type 1 would be worse, because the conclusion it draws could be construed as actionable information, leading to a greater consequence.\
