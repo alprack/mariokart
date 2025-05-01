@@ -70,6 +70,10 @@ mariokart %>%
 
 Once we have the sale price, then we can begin to find the relationship between the two.
 
+To create a scatterplot, which is necessary to show correlation, we need to first clean the data, by eliminating extreme outliers, of which there are one or two. The most extreme outlier is a listing that also includes a Wii console, so we are attempting to eliminate external factors.
+
+In addition we are restraining the data to be within a certain range, so that no strange data affects the result.
+
 ```{r}
 
 # Compute IQR boundaries
@@ -90,6 +94,7 @@ mariokart_clean %>%
 
 ```
 
+After all of that, we can finally generate the scatterplot. 
 
 ```{r}
 ggplot(mariokart_clean, aes(x = wheels, y = (total_pr - ship_pr))) +
