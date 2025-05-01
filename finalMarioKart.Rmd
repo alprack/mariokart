@@ -54,12 +54,20 @@ We expect that increasing the number of wheels will increase the auction price.\
 
 ## Main Analyses:
 
-The primary purpose of this assessment is to find what effect the quantity of steering wheels has on the sale price of Mario Kart Games. This requires finding the actual price of the auctioned goods.\
+The primary purpose of this assessment is to find what effect the quantity of steering wheels has on the sale price of all Mario Kart Wii Games. This requires finding the actual price of the auctioned goods.\
 
-As the data set does not provide ending auction price as its own variable, we must subtract shipping price from the total price
+As the data set does not provide ending auction price as its own variable, we must subtract shipping price from the total price\
 
 ```{r}
 mariokart <- as_tibble(mariokart)
 mariokart %>%
   mutate (auction_pr = total_pr - ship_pr)
 ```
+
+<maybe insert shipping detatil here>
+
+Once we have the sale price, then we can begin to find the relationship between the two.
+
+
+
+
