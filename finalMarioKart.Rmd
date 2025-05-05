@@ -60,14 +60,11 @@ The primary purpose of this assessment is to find what effect the quantity of st
 
 As the data set does not provide ending auction price as its own variable, we must subtract shipping price from the total price\
 
+Once we have the sale price, then we can begin to find the relationship between the two.\
 
-<maybe insert shipping detatil here>
+To create a scatterplot, which is necessary to show correlation, we need to first clean the data, by eliminating extreme outliers, of which there are one or two. The most extreme outlier is a listing that also includes a Wii console, so we are attempting to eliminate external factors. \
 
-Once we have the sale price, then we can begin to find the relationship between the two.
-
-To create a scatterplot, which is necessary to show correlation, we need to first clean the data, by eliminating extreme outliers, of which there are one or two. The most extreme outlier is a listing that also includes a Wii console, so we are attempting to eliminate external factors.
-
-In addition we are restraining the data to be within a certain range, so that no strange data affects the result.
+In addition we are restraining the data to be within a certain range, so that no strange data affects the result.\
 
 ```{r}
 
@@ -89,7 +86,7 @@ mariokart_clean <- mariokart_clean %>%
 
 ```
 
-After all of that, we can finally generate the scatterplot. 
+After all of that, we can finally generate the scatterplot. \
 
 ```{r}
 ggplot(mariokart_clean, aes(x = wheels, y = (auction_pr))) +
@@ -110,7 +107,7 @@ ggplot(mariokart_clean, aes(x = wheels, y = (auction_pr))) +
 cor(x = mariokart_clean$wheels, y = (mariokart_clean$auction_pr))
 ```
 
-To describe our line of best fit, which should show the which should further show this relation, we need to create a linear model. This will provide a large amount of data about this line and how accurate it is. The line minimizes the squares of all residuals.
+To describe our line of best fit, which should show the which should further show this relation, we need to create a linear model. This will provide a large amount of data about this line and how accurate it is. The line minimizes the squares of all residuals.\
 
 ```{r}
 mariokartlm <- lm(auction_pr ~ wheels, data = mariokart_clean) # Regress y on x, or symbolically, y ~ x
@@ -123,7 +120,7 @@ intercept <- mariokartlm$coefficients["(Intercept)"]
 slope <- mariokartlm$coefficients["wheels"] 
 ```
 
-With this data, we can graph the residuals to further show the effectiveness of the relationship line. These residuals, when squared and summed, create the Residual of Squared Sums, which can be further used to calculate the Mean Squared Error. Minimizing these two is, in effect, creating the best fit line. 
+With this data, we can graph the residuals to further show the effectiveness of the relationship line. These residuals, when squared and summed, create the Residual of Squared Sums, which can be further used to calculate the Mean Squared Error. Minimizing these two is, in effect, creating the best fit line. \
 
 ```{r}
 plot(mariokartlm,1)
@@ -136,5 +133,13 @@ plot(mariokartlm,1)
 ```{r}
 (MSE <- RSS/nrow(mariokart_clean))
 ```
+
+Because the RSS and MSE are relatively low (the MSE being 34 meaning that, on average, the actual value is less than 6 units away from the predicted), this demonstrates that this line is a good fit for this scatterplot. \
+
+In addition, this means that, because the scatterplot is related to the line, and the line is positive and linear, the scatterplot, or our data, has a positive, linear relationship.\
+
+
+
+
 
 
