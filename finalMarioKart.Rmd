@@ -125,6 +125,16 @@ slope <- mariokartlm$coefficients["wheels"]
 
 With this data, we can graph the residuals to further show the effectiveness of the relationship line. These residuals, when squared and summed, create the Residual of Squared Sums, which can be further used to calculate the Mean Squared Error. Minimizing these two is, in effect, creating the best fit line. 
 
+```{r}
+plot(mariokartlm,1)
+```
 
+```{r}
+(RSS <- sum(mariokartlm$residuals^2))
+```
+
+```{r}
+(MSE <- RSS/nrow(mariokart_clean))
+```
 
 
