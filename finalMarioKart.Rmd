@@ -109,6 +109,7 @@ ggplot(mariokart_clean, aes(x = wheels, y = (auction_pr))) +
 ```{r}
 cor(x = mariokart_clean$wheels, y = (mariokart_clean$auction_pr))
 ```
+
 To describe our line of best fit, which should show the which should further show this relation, we need to create a linear model. This will provide a large amount of data about this line and how accurate it is. The line minimizes the squares of all residuals.
 
 ```{r}
@@ -121,3 +122,9 @@ mariokartlm$coefficients
 intercept <- mariokartlm$coefficients["(Intercept)"]
 slope <- mariokartlm$coefficients["wheels"] 
 ```
+
+With this data, we can graph the residuals to further show the effectiveness of the relationship line. These residuals, when squared and summed, create the Residual of Squared Sums, which can be further used to calculate the Mean Squared Error. Minimizing these two is, in effect, creating the best fit line. 
+
+
+
+
