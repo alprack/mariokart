@@ -105,8 +105,17 @@ ggplot(mariokart_clean, aes(x = wheels, y = (auction_pr))) +
 
 
 ```
+
 ```{r}
 cor(x = mariokart_clean$wheels, y = (mariokart_clean$auction_pr))
 ```
-
-
+```{r}
+mariokartlm <- lm(auction_pr ~ wheels, data = mariokart_clean) # Regress y on x, or symbolically, y ~ x
+lm_summary <- summary(mariokartlm)
+lm_summary
+```
+```{r}
+mariokartlm$coefficients
+intercept <- mariokartlm$coefficients["(Intercept)"]
+slope <- mariokartlm$coefficients["wheels"] 
+```
