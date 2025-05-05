@@ -109,6 +109,8 @@ ggplot(mariokart_clean, aes(x = wheels, y = (auction_pr))) +
 ```{r}
 cor(x = mariokart_clean$wheels, y = (mariokart_clean$auction_pr))
 ```
+To describe our line of best fit, which should show the which should further show this relation, we need to create a linear model. This will provide a large amount of data about this line and how accurate it is. The line minimizes the squares of all residuals.
+
 ```{r}
 mariokartlm <- lm(auction_pr ~ wheels, data = mariokart_clean) # Regress y on x, or symbolically, y ~ x
 lm_summary <- summary(mariokartlm)
