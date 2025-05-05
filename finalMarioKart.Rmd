@@ -60,11 +60,6 @@ The primary purpose of this assessment is to find what effect the quantity of st
 
 As the data set does not provide ending auction price as its own variable, we must subtract shipping price from the total price\
 
-```{r}
-mariokart <- as_tibble(mariokart)
-mariokart %>%
-  mutate (auction_pr = total_pr - ship_pr)
-```
 
 <maybe insert shipping detatil here>
 
@@ -89,7 +84,7 @@ upper_bound <- q3 + 1.5 * iqr
 mariokart_clean <- mariokart %>%
   filter(total_pr >= lower_bound & total_pr <= upper_bound)
 
-mariokart_clean %>%
+mariokart_clean <- mariokart_clean %>%
   mutate (auction_pr = total_pr - ship_pr)
 
 ```
@@ -97,8 +92,8 @@ mariokart_clean %>%
 After all of that, we can finally generate the scatterplot. 
 
 ```{r}
-ggplot(mariokart_clean, aes(x = wheels, y = (total_pr - ship_pr))) +
-  geom_jitter(width = 0.1, alpha = 0.6, color = "blue") +
+ggplot(mariokart_clean, aes(x = wheels, y = (auction_pr))) +
+  geom_point(width = 0.1, alpha = 0.6, color = "blue") +
   geom_smooth(method = "lm", se = TRUE, color = "red") +
   scale_x_continuous(breaks = c(0, 1, 2, 3, 4, 5), labels = c(0, 1, 2, 3, 4, 5)) +
   labs(
@@ -110,6 +105,8 @@ ggplot(mariokart_clean, aes(x = wheels, y = (total_pr - ship_pr))) +
 
 
 ```
-
+```{r}
+cor(x = mariokart_clean$wheels, y = (mariokart_clean$auction_pr))
+```
 
 
