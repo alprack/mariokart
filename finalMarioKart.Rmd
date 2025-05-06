@@ -99,11 +99,13 @@ After all of that, we can finally generate the scatterplot.\
 ggplot(data = mariokart_clean, aes(x = wheels, y = auction_pr)) +
   geom_point()
 ```
+
 The relationship between the two variable seems to be linear, positive, and moderately strong
 
 ```{r}
 cor(x = mariokart_clean$wheels, y = (mariokart_clean$auction_pr))
 ```
+
 The correlation between the two variables is shown to be positive and moderately strong
 
 To find our line of best fit, which should show the which should further show this relation, we need to create a linear model.
@@ -115,6 +117,8 @@ mariokartlm <- lm(auction_pr ~ wheels, data = mariokart_clean) # Regress y on x,
 lm_summary <- summary(mariokartlm)
 lm_summary
 ```
+
+The p-statistic in this summary being so small means that the null hypothesis is very much not true, as the variables have a high relation.
 
 ```{r}
 mariokartlm$coefficients
@@ -129,6 +133,7 @@ ggplot(data = mariokart_clean, aes(x = wheels, y = auction_pr)) +
   geom_point() +
   geom_abline(intercept = intercept, slope = slope)
 ```
+
 The line has a slope of 8.2, further showing the positive relationship between the two variables.
 
 to further show the effectiveness of the relationship line, we can graph the residuals.\
@@ -154,6 +159,7 @@ In addition, this means that, because the scatterplot is related to the line, an
 ```{r}
 (anova_model <- aov(auction_pr ~ factor(wheels), data = mariokart_clean))
 ```
+
 ```{r}
 summary(anova_model)
 ```
@@ -161,7 +167,8 @@ summary(anova_model)
 ## Conclusion
 
 To satisfy the question posed in the beginning of this report, much analysis was done, and resolved to one answer.
-The alternative hypothests, wherein the slope of the scatterplot of the number of wheels and the cost of the item is not equal to or reasonably near zero, is more likely.\
+The alternative hypothests, wherein the slope of the scatterplot of the number of wheels and the cost of the item is not equal to or reasonably near zero, is more likely.
+The p-value of the linear model is also very low, which indicates that the slope is nowhere near zero.\
 
 We can safely say that the null hypothesis can be rejected.
 The cost of the items and the number of wheels are related in a positive way.\
