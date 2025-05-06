@@ -35,8 +35,8 @@ wheels: numbers of wheels included (numerical)\
 ## Research Questions:
 
 Question: How does the quantity of wheels affect the auction price for a Mario Kart Wii game?\
-Null: The quantity of wheels does not affect the auction price.\
-Alternative: The quantity of wheels affects the auction price.\
+Null: H0: b1 = 0, The quantity of wheels does not affect the auction price.\
+Alternative: H1: b1 != 0, The quantity of wheels affects the auction price.\
 
 ### Errors
 
@@ -138,6 +138,9 @@ Because the RSS and MSE are relatively low (the MSE being 34 meaning that, on av
 
 In addition, this means that, because the scatterplot is related to the line, and the line is positive and linear, the scatterplot, or our data, has a positive, linear relationship.\
 
+## Conclusion
+
+To satisfy the question posed in the beginning of this report, much analysis was done, and resolved to one answer. The alternative hypothests, wherein the slope of the scatterplot of the number of wheels and the cost of the item is not equal to or reasonably near zero, is true.\
 
 
 
