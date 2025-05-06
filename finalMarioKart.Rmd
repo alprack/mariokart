@@ -151,7 +151,10 @@ Because the RSS and MSE are relatively low (the MSE being 34 meaning that, on av
 In addition, this means that, because the scatterplot is related to the line, and the line is positive and linear, the scatterplot, or our data, has a positive, linear relationship.
 
 ```{r}
-(anova_model <- aov(auction_pr ~ wheels, data = mariokart_clean))
+(anova_model <- aov(auction_pr ~ factor(wheels), data = mariokart_clean))
+```
+```{r}
+summary(anova_model)
 ```
 
 ## Conclusion
