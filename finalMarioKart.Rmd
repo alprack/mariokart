@@ -63,6 +63,7 @@ The primary purpose of this assessment is to find what effect the quantity of st
 This requires finding the actual price of the auctioned goods.\
 
 As the data set does not provide ending auction price as its own variable, we must subtract shipping price from the total price\
+
 ```{r}
 mariokart_clean <- mariokart %>%
   mutate (auction_pr = total_pr - ship_pr)
@@ -148,11 +149,16 @@ plot(mariokartlm,1)
 
 Because the RSS and MSE are relatively low (the MSE being 34 meaning that, on average, the actual value is less than 6 units away from the predicted), this demonstrates that this line is a good fit for this scatterplot.\
 
-In addition, this means that, because the scatterplot is related to the line, and the line is positive and linear, the scatterplot, or our data, has a positive, linear relationship.\
+In addition, this means that, because the scatterplot is related to the line, and the line is positive and linear, the scatterplot, or our data, has a positive, linear relationship.
+
+```{r}
+t.test(mariokart_clean$auction_pr, mariokart_clean$wheels)
+```
 
 ## Conclusion
 
 To satisfy the question posed in the beginning of this report, much analysis was done, and resolved to one answer.
 The alternative hypothests, wherein the slope of the scatterplot of the number of wheels and the cost of the item is not equal to or reasonably near zero, is more likely.\
 
-We can safely say that the null hypothesis can be rejected. The cost of the items and the number of wheels are related in a positive way.\
+We can safely say that the null hypothesis can be rejected.
+The cost of the items and the number of wheels are related in a positive way.\
