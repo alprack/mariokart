@@ -2,9 +2,11 @@
 title: "finalProjAboutMarioKart"
 author: "Rowan Ess, Anna Prack"
 date: "2025-04-22"
-output: html_document
-editor_options: 
-  markdown: 
+output:
+  html_document: default
+  pdf_document: default
+editor_options:
+  markdown:
     wrap: sentence
 ---
 
@@ -36,7 +38,8 @@ wheels: numbers of wheels included (numerical)\
 
 Question: How does the quantity of wheels affect the auction price for a Mario Kart Wii game?\
 Null: H0: b1 = 0, The quantity of wheels does not affect the auction price.\
-Alternative: H1: b1 != 0, The quantity of wheels affects the auction price.\
+Alternative: H1: b1 !=
+0, The quantity of wheels affects the auction price.\
 
 ### Errors
 
@@ -56,13 +59,15 @@ We expect that increasing the number of wheels will increase the auction price.\
 
 ## Main Analyses:
 
-The primary purpose of this assessment is to find what effect the quantity of steering wheels has on the sale price of all Mario Kart Wii Games. This requires finding the actual price of the auctioned goods.\
+The primary purpose of this assessment is to find what effect the quantity of steering wheels has on the sale price of all Mario Kart Wii Games.
+This requires finding the actual price of the auctioned goods.\
 
 As the data set does not provide ending auction price as its own variable, we must subtract shipping price from the total price\
 
 Once we have the sale price, then we can begin to find the relationship between the two.\
 
-To create a scatterplot, which is necessary to show correlation, we need to first clean the data, by eliminating extreme outliers, of which there are one or two. The most extreme outlier is a listing that also includes a Wii console, so we are attempting to eliminate external factors. \
+To create a scatterplot, which is necessary to show correlation, we need to first clean the data, by eliminating extreme outliers, of which there are one or two.
+The most extreme outlier is a listing that also includes a Wii console, so we are attempting to eliminate external factors.\
 
 In addition we are restraining the data to be within a certain range, so that no strange data affects the result.\
 
@@ -86,7 +91,7 @@ mariokart_clean <- mariokart_clean %>%
 
 ```
 
-After all of that, we can finally generate the scatterplot. \
+After all of that, we can finally generate the scatterplot.\
 
 ```{r}
 ggplot(mariokart_clean, aes(x = wheels, y = (auction_pr))) +
@@ -107,20 +112,25 @@ ggplot(mariokart_clean, aes(x = wheels, y = (auction_pr))) +
 cor(x = mariokart_clean$wheels, y = (mariokart_clean$auction_pr))
 ```
 
-To describe our line of best fit, which should show the which should further show this relation, we need to create a linear model. This will provide a large amount of data about this line and how accurate it is. The line minimizes the squares of all residuals.\
+To describe our line of best fit, which should show the which should further show this relation, we need to create a linear model.
+This will provide a large amount of data about this line and how accurate it is.
+The line minimizes the squares of all residuals.\
 
 ```{r}
 mariokartlm <- lm(auction_pr ~ wheels, data = mariokart_clean) # Regress y on x, or symbolically, y ~ x
 lm_summary <- summary(mariokartlm)
 lm_summary
 ```
+
 ```{r}
 mariokartlm$coefficients
 intercept <- mariokartlm$coefficients["(Intercept)"]
 slope <- mariokartlm$coefficients["wheels"] 
 ```
 
-With this data, we can graph the residuals to further show the effectiveness of the relationship line. These residuals, when squared and summed, create the Residual of Squared Sums, which can be further used to calculate the Mean Squared Error. Minimizing these two is, in effect, creating the best fit line. \
+With this data, we can graph the residuals to further show the effectiveness of the relationship line.
+These residuals, when squared and summed, create the Residual of Squared Sums, which can be further used to calculate the Mean Squared Error.
+Minimizing these two is, in effect, creating the best fit line.\
 
 ```{r}
 plot(mariokartlm,1)
@@ -134,15 +144,13 @@ plot(mariokartlm,1)
 (MSE <- RSS/nrow(mariokart_clean))
 ```
 
-Because the RSS and MSE are relatively low (the MSE being 34 meaning that, on average, the actual value is less than 6 units away from the predicted), this demonstrates that this line is a good fit for this scatterplot. \
+Because the RSS and MSE are relatively low (the MSE being 34 meaning that, on average, the actual value is less than 6 units away from the predicted), this demonstrates that this line is a good fit for this scatterplot.\
 
 In addition, this means that, because the scatterplot is related to the line, and the line is positive and linear, the scatterplot, or our data, has a positive, linear relationship.\
 
 ## Conclusion
 
-To satisfy the question posed in the beginning of this report, much analysis was done, and resolved to one answer. The alternative hypothests, wherein the slope of the scatterplot of the number of wheels and the cost of the item is not equal to or reasonably near zero, is true.\
+To satisfy the question posed in the beginning of this report, much analysis was done, and resolved to one answer.
+The alternative hypothests, wherein the slope of the scatterplot of the number of wheels and the cost of the item is not equal to or reasonably near zero, is more likely.\
 
-
-
-
-
+We can safely say that the null hypothesis can be rejected. The cost of the items and the number of wheels are related in a positive way.\
