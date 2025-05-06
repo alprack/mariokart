@@ -96,25 +96,17 @@ mariokart_clean <- mariokart_clean %>%
 After all of that, we can finally generate the scatterplot.\
 
 ```{r}
-ggplot(mariokart_clean, aes(x = wheels, y = (auction_pr))) +
-  geom_point(width = 0.1, alpha = 0.6, color = "blue") +
-  geom_smooth(method = "lm", se = TRUE, color = "red") +
-  scale_x_continuous(breaks = c(0, 1, 2, 3, 4, 5), labels = c(0, 1, 2, 3, 4, 5)) +
-  labs(
-    title = "Auction Price by Wheel Accessory",
-    x = "Number of Wheel Accessory Included",
-    y = "Auction Price Paid (USD)"
-  ) +
-  theme_minimal()
-
-
+ggplot(data = mariokart_clean, aes(x = wheels, y = auction_pr)) +
+  geom_point()
 ```
+The relationship between the two variable seems to be linear, positive, and moderately strong
 
 ```{r}
 cor(x = mariokart_clean$wheels, y = (mariokart_clean$auction_pr))
 ```
+The correlation between the two variables is shown to be positive and moderately strong
 
-To describe our line of best fit, which should show the which should further show this relation, we need to create a linear model.
+To find our line of best fit, which should show the which should further show this relation, we need to create a linear model.
 This will provide a large amount of data about this line and how accurate it is.
 The line minimizes the squares of all residuals.\
 
@@ -130,7 +122,16 @@ intercept <- mariokartlm$coefficients["(Intercept)"]
 slope <- mariokartlm$coefficients["wheels"] 
 ```
 
-With this data, we can graph the residuals to further show the effectiveness of the relationship line.
+With the data from our linear model, we can create a graph with a line of best fit
+
+```{r}
+ggplot(data = mariokart_clean, aes(x = wheels, y = auction_pr)) +
+  geom_point() +
+  geom_abline(intercept = intercept, slope = slope)
+```
+The line has a slope of 8.2, further showing the positive relationship between the two variables.
+
+to further show the effectiveness of the relationship line, we can graph the residuals.\
 These residuals, when squared and summed, create the Residual of Squared Sums, which can be further used to calculate the Mean Squared Error.
 Minimizing these two is, in effect, creating the best fit line.\
 
