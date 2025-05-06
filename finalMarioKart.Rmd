@@ -63,6 +63,11 @@ The primary purpose of this assessment is to find what effect the quantity of st
 This requires finding the actual price of the auctioned goods.\
 
 As the data set does not provide ending auction price as its own variable, we must subtract shipping price from the total price\
+```{r}
+mariokart_clean <- mariokart %>%
+  mutate (auction_pr = total_pr - ship_pr)
+
+```
 
 Once we have the sale price, then we can begin to find the relationship between the two.\
 
@@ -74,8 +79,8 @@ In addition we are restraining the data to be within a certain range, so that no
 ```{r}
 
 # Compute IQR boundaries
-q1 <- quantile(mariokart$total_pr, 0.25)
-q3 <- quantile(mariokart$total_pr, 0.75)
+q1 <- quantile(mariokart_clean$auction_pr, 0.25)
+q3 <- quantile(mariokart_clean$auction_pr, 0.75)
 iqr <- q3 - q1
 
 # Define outlier bounds
@@ -83,11 +88,8 @@ lower_bound <- q1 - 1.5 * iqr
 upper_bound <- q3 + 1.5 * iqr
 
 # Filter out outliers
-mariokart_clean <- mariokart %>%
-  filter(total_pr >= lower_bound & total_pr <= upper_bound)
-
 mariokart_clean <- mariokart_clean %>%
-  mutate (auction_pr = total_pr - ship_pr)
+  filter(auction_pr >= lower_bound & auction_pr <= upper_bound)
 
 ```
 
