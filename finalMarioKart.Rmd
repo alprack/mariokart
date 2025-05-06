@@ -67,7 +67,6 @@ As the data set does not provide ending auction price as its own variable, we mu
 ```{r}
 mariokart_clean <- mariokart %>%
   mutate (auction_pr = total_pr - ship_pr)
-
 ```
 
 Once we have the sale price, then we can begin to find the relationship between the two.\
@@ -102,8 +101,8 @@ ggplot(mariokart_clean, aes(x = wheels, y = (auction_pr))) +
   geom_smooth(method = "lm", se = TRUE, color = "red") +
   scale_x_continuous(breaks = c(0, 1, 2, 3, 4, 5), labels = c(0, 1, 2, 3, 4, 5)) +
   labs(
-    title = "Auction Price by Wheel Accessory (Outliers Removed)",
-    x = "Wheel Accessory Included",
+    title = "Auction Price by Wheel Accessory",
+    x = "Number of Wheel Accessory Included",
     y = "Auction Price Paid (USD)"
   ) +
   theme_minimal()
@@ -152,7 +151,7 @@ Because the RSS and MSE are relatively low (the MSE being 34 meaning that, on av
 In addition, this means that, because the scatterplot is related to the line, and the line is positive and linear, the scatterplot, or our data, has a positive, linear relationship.
 
 ```{r}
-t.test(mariokart_clean$auction_pr, mariokart_clean$wheels)
+(anova_model <- aov(auction_pr ~ wheels, data = mariokart_clean))
 ```
 
 ## Conclusion
