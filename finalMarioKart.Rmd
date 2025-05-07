@@ -72,9 +72,13 @@ mariokart_clean <- mariokart %>%
 Once we have the sale price, then we can begin to find the relationship between the two.\
 
 To create a scatterplot, which is necessary to show correlation, we need to first clean the data, by eliminating extreme outliers, of which there are one or two.
-The most extreme outlier is a listing that also includes a Wii console, so we are attempting to eliminate external factors.\
+Below is a box and whisker plot to demonstrate the outliers\
+```{r}
+boxplot(mariokart_clean$auction_pr)
+```
 
 In addition we are restraining the data to be within a certain range, so that no strange data affects the result.\
+The most extreme outlier is a listing that also includes a Wii console, so we are attempting to eliminate external factors.\
 
 ```{r}
 
@@ -118,8 +122,6 @@ lm_summary <- summary(mariokartlm)
 lm_summary
 ```
 
-The p-statistic in this summary being so small means that the null hypothesis is very much not true, as the variables have a high relation.
-
 ```{r}
 mariokartlm$coefficients
 intercept <- mariokartlm$coefficients["(Intercept)"]
@@ -154,15 +156,15 @@ hist(mariokartlm$residuals)
 
 Because the RSS and MSE are relatively low (the MSE being 34 meaning that, on average, the actual value is less than 6 units away from the predicted), this demonstrates that this line is a good fit for this scatterplot.\
 
-In addition, this means that, because the scatterplot is related to the line, and the line is positive and linear, the scatterplot, or our data, has a positive, linear relationship.
+In addition, this means that, because the scatterplot is related to the line, and the line is positive and linear, the scatterplot, or our data, has a positive, linear relationship.\
+
+An Analysis of Variance (ANOVA) is a test used to compare means across different groups. We will use an ANOVA test to compare the means across different numbers of wheels
 
 ```{r}
-(anova_model <- aov(auction_pr ~ factor(wheels), data = mariokart_clean))
-```
-
-```{r}
+anova_model <- aov(auction_pr ~ wheels, data = mariokart_clean)
 summary(anova_model)
 ```
+The p-statistic in this summary being so small means that the null hypothesis is very much not true, as the variables have a high relation.
 
 ## Conclusion
 
