@@ -169,7 +169,8 @@ The p-statistic in this summary being so small means that the null hypothesis is
 ## Conclusion
 
 To satisfy the question posed in the beginning of this report, much analysis was done, and resolved to one answer.
-The alternative hypothests, wherein the slope of the scatterplot of the number of wheels and the cost of the item is not equal to or reasonably near zero, is more likely.
+The alternative hypothests, wherein the slope of the scatterplot of the number of wheels and the cost of the item is not equal to or reasonably near zero, is more likely.\
+
 The p-value of the linear model is also very low, which indicates that the slope is nowhere near zero.\
 
 We can safely say that the null hypothesis can be rejected.
