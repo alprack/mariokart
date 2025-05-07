@@ -136,12 +136,12 @@ ggplot(data = mariokart_clean, aes(x = wheels, y = auction_pr)) +
 
 The line has a slope of 8.2, further showing the positive relationship between the two variables.
 
-to further show the effectiveness of the relationship line, we can graph the residuals.\
+to further show the effectiveness of the relationship line, we can graph the residuals. Nearly normal residuals support the linearity of the reltionship\
 These residuals, when squared and summed, create the Residual of Squared Sums, which can be further used to calculate the Mean Squared Error.
 Minimizing these two is, in effect, creating the best fit line.\
 
 ```{r}
-plot(mariokartlm,1)
+hist(mariokartlm$residuals)
 ```
 
 ```{r}
